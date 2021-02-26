@@ -6,15 +6,28 @@
     <Copyright>Elias Youssef</Copyright>
     <PackageTags>Configurations, Configs, AppData, local AppData</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://github.com/Eliasyoussef47/Configs</PackageProjectUrl>
+    <Description>A simple way to save the configurations of a C# app in json.
+Window Settings icon by Icons8 (https://icons8.com)</Description>
+    <Version>1.0.3</Version>
+    <FileVersion>1.0.3.0</FileVersion>
+    <PackageIcon>icons8-window-settings-96.png</PackageIcon>
+    <AssemblyVersion>1.0.3.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="LocalAppDataFolder" Version="1.0.2" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <Compile Remove="Helpers\**" />
+    <EmbeddedResource Remove="Helpers\**" />
+    <None Remove="Helpers\**" />
+    <None Include="Assets\icons8-window-settings-96.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Helpers\" />
+    <PackageReference Include="LocalAppDataFolder" Version="1.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
 </Project>

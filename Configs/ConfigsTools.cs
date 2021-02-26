@@ -2,20 +2,21 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using LocalAppDataFolder;
 
 namespace Configs
 {
-    abstract class ConfigsTools
+    public abstract class ConfigsTools
     {
         [JsonIgnore]
         protected static string ConfigsFileName = "Configs.json";
 
         public void Save()
         {
-            JsonSerializer serializer = new JsonSerializer();
-            serializer.Formatting = Formatting.Indented;
+            JsonSerializer serializer = new JsonSerializer
+            {
+                Formatting = Formatting.Indented
+            };
             LocalAppData localAppDataFolder = new LocalAppData();
             var configFile = this;
             using (FileStream stream = localAppDataFolder.GetFile(ConfigsFileName))
