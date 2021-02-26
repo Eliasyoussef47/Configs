@@ -1,6 +1,8 @@
 
 # Configs
 A simple way to save the configurations of a C# app as a json file.
+
+The json file(s) is saved in AppData/Local and there is currently no way to change that.
 # How to use
 Before we start, install the package from NuGet.
 
