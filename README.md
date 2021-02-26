@@ -1,4 +1,4 @@
-![alt text](/Configs/Assets/icons8-window-settings-96.png)
+![Configs icon](/Configs/Assets/icons8-window-settings-96.png)
 # Configs
 A simple way to save the configurations of a C# app as a json file.
 
@@ -57,4 +57,20 @@ Pretty much anything supported by Newtonsoft.Json and is serializable can be use
     // Save the file.
     appConfigs.Save();
 
+## Result
+
+    {
+	"Activated": true,
+	"RandomString": "Hey",
+	"ImportantStuff": [
+			{
+				"ownerName": "Elias Youssef"
+			},
+			{
+				"ownerName": "Slim Shady"
+			}
+		]
+	}
+
 <a target="_blank" href="https://icons8.com/icons/set/window-settings">Window Settings icon</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
