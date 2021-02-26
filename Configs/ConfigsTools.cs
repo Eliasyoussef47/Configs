@@ -37,7 +37,7 @@ namespace Configs
         /// <summary>
         /// Gets the current configurations from the configurations file.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="T">The type of the configurations file model.</typeparam>
         /// <returns>An instance of the configurations file model filled with the current configurations in  the 
         /// configurations file. Creates a new file and returns a new instance of the class/model if no file was found.
         /// </returns>
