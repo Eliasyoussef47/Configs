@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <Authors>Elias Youssef</Authors>
+    <Copyright>Elias Youssef</Copyright>
+    <PackageTags>Configurations, Configs, AppData, local AppData</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

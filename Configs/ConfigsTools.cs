@@ -9,15 +9,21 @@ namespace Configs
 {
     abstract class ConfigsTools
     {
+        [JsonIgnore]
+        protected static string ConfigsFileName = "Configs.json";
+
         public void Save()
         {
             JsonSerializer serializer = new JsonSerializer();
             serializer.Formatting = Formatting.Indented;
             var configFile = this;
             LocalAppData localAppDataFolder = new LocalAppData();
-            FieldInfo fieldInfo = this.GetType().GetField("ConfigsFileName", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
-            string value = (string)fieldInfo.GetValue(null);
-            using (FileStream stream = localAppDataFolder.GetFile(value))
+            FieldInfo fieldInfo = this.GetType().GetField(
+                "ConfigsFileName",
+                BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance | 
+                BindingFlags.FlattenHierarchy);
+            string configsFileName = (string)fieldInfo.GetValue(null);
+            using (FileStream stream = localAppDataFolder.GetFile(configsFileName))
             using (StreamWriter sw = new StreamWriter(stream))
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
@@ -29,10 +35,12 @@ namespace Configs
         {
             T result;
             JsonSerializer serializer = new JsonSerializer();
-            FieldInfo fieldInfo = typeof(T).GetField("ConfigsFileName", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
-            string value = (string)fieldInfo.GetValue(null);
+            FieldInfo fieldInfo = typeof(T).GetField(
+                "ConfigsFileName", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public | 
+                BindingFlags.Instance | BindingFlags.FlattenHierarchy);
+            string configsFileName = (string)fieldInfo.GetValue(null);
             LocalAppData localAppDataFolder = new LocalAppData();
-            using (FileStream stream = localAppDataFolder.GetFile(value))
+            using (FileStream stream = localAppDataFolder.GetFile(configsFileName))
             using (StreamReader sw = new StreamReader(stream))
             using (JsonReader reader = new JsonTextReader(sw))
             {
