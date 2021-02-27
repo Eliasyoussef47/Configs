@@ -1,7 +1,7 @@
 ![Configs icon](/Configs/Assets/icons8-window-settings-96.png)
 # Configs
 
-https://www.nuget.org/packages/Configs/1.0.3
+https://www.nuget.org/packages/Configs/
 
 A simple way to save the configurations of a C# app as a json file.
 
