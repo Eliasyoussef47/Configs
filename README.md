@@ -39,7 +39,7 @@ namespace MyApp
 	[JsonProperty("randomString", Required = Required.Default)]
 	public string RandomString { get; set; }
 
-	[JsonProperty("registeredTriggerSenders", Required = Required.AllowNull)]
+	[JsonProperty("importantStuff", Required = Required.AllowNull)]
 	public List<ImportantThing> ImportantStuff { get; set; }
 
 	public ImportantThing GetImportantThing(string owner)
@@ -80,9 +80,9 @@ appConfigs.Save();
 
 ```json
 {
-  "Activated": true,
-  "RandomString": "Hey",
-  "ImportantStuff": [
+  "activated": true,
+  "randomString": "Hey",
+  "importantStuff": [
     {
       "ownerName": "Elias Youssef"
     },
