@@ -74,6 +74,7 @@ Pretty much anything supported by Newtonsoft.Json and is serializable can be use
 			}
 		]
     }
+	
 
 <a target="_blank" href="https://icons8.com/icons/set/window-settings">Window Settings icon</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
 
