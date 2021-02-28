@@ -63,18 +63,18 @@ Pretty much anything supported by Newtonsoft.Json and is serializable can be use
 ## Result
 
     {
-		"Activated": true,
-		"RandomString": "Hey",
-		"ImportantStuff": [
-			{
-				"ownerName": "Elias Youssef"
-			},
-			{
-				"ownerName": "Slim Shady"
-			}
-		]
+        "Activated": true,
+        "RandomString": "Hey",
+        "ImportantStuff": [
+            {
+                "ownerName": "Elias Youssef"
+            },
+            {
+                "ownerName": "Slim Shady"
+            }
+        ]
     }
-	
+
 
 <a target="_blank" href="https://icons8.com/icons/set/window-settings">Window Settings icon</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
 
