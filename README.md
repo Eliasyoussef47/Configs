@@ -53,9 +53,9 @@ namespace MyApp
 Pretty much anything supported by Newtonsoft.Json and is serializable can be used in this model. You can of course make
 multiple models each with a different ConfigsFileName to have multiple configurations files.
 
-## Usage:
+## Usage
 
-### Getting the file's values:
+### Getting the file's values
 
 ```C#
 using Configs;
@@ -70,7 +70,7 @@ bool appConfigActivated = appConfigs.Activated;
 // GetConfigs again.
 ```
 
-### Editing and saving the file:
+### Editing and saving the file
 
 ```C#
 using Configs;
