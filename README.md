@@ -58,8 +58,12 @@ multiple models each with a different ConfigsFileName to have multiple configura
 ### Getting the file's values:
 
 ```C#
+using Configs;
+
+...
+
 // Get the current app configurations from the json configurations file.
-AppConfigs appConfigs = Configs.ConfigsTools.GetConfigs<AppConfigs>();
+AppConfigs appConfigs = ConfigsTools.GetConfigs<AppConfigs>();
 // Get a value from the configurations file.
 bool appConfigActivated = appConfigs.Activated;
 // This is the value at time GetConfigs was called. If you want updated values then you have to call
