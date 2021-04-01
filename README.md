@@ -62,7 +62,7 @@ multiple models each with a different ConfigsFileName to have multiple configura
 AppConfigs appConfigs = Configs.ConfigsTools.GetConfigs<AppConfigs>();
 // Get a value from the configurations file.
 bool appConfigActivated = appConfigs.Activated;
-// This the value at time GetConfigs was called. If you want updated values then you have to call GetConfigs again.
+// This is the value at time GetConfigs was called. If you want updated values then you have to call GetConfigs again.
 ```
 
 ### Editing and saving the file:
