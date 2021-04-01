@@ -73,8 +73,12 @@ bool appConfigActivated = appConfigs.Activated;
 ### Editing and saving the file:
 
 ```C#
+using Configs;
+
+...
+
 // Get the current app configurations from the json configurations file.
-AppConfigs appConfigs = Configs.ConfigsTools.GetConfigs<AppConfigs>();
+AppConfigs appConfigs = ConfigsTools.GetConfigs<AppConfigs>();
 // Change value.
 appConfigs.Activated = false;
 // Save the file.
