@@ -66,8 +66,6 @@ using Configs;
 AppConfigs appConfigs = ConfigsTools.GetConfigs<AppConfigs>();
 // Get a value from the configurations file.
 bool appConfigActivated = appConfigs.Activated;
-// This is the value at the time GetConfigs was called. If you want updated values then you have to call
-// GetConfigs again.
 ```
 
 ### Editing and saving the file
