@@ -89,7 +89,7 @@ appConfigs.Save();
 
 ```json
 {
-  "activated": true,
+  "activated": false,
   "randomString": "Hey",
   "importantStuff": [
     {
