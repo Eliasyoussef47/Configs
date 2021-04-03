@@ -100,6 +100,4 @@ appConfigs.Save();
 }
 ```
 
-<a target="_blank" href="https://icons8.com/icons/set/window-settings">Window Settings icon</a> icon
-by <a target="_blank" href="https://icons8.com">Icons8</a>
-
+[Window Settings icon](https://icons8.com/icons/set/window-settings) icon by [Icons8](https://icons8.com)
