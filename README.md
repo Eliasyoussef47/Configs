@@ -1,4 +1,4 @@
-![Configs icon](/Configs/Assets/icons8-window-settings-96.png)
+![Configs icon](https://raw.githubusercontent.com/Eliasyoussef47/Configs/master/Configs/Assets/icons8-window-settings-96.png)
 
 # Configs
 
