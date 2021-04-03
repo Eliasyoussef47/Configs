@@ -17,8 +17,8 @@ going to be used as the model for the configuration file.
 
 ## Setup
 
-Make a class that inherits from ConfigsTools. This class is the model for your configurations file, so it details how
-the json file is going to look like.
+Make a class that inherits from ConfigsTools. This class is the model for your configurations file, so it details how the json file is going to look like.
+Model example:
 
 ```C#
 using Configs;
