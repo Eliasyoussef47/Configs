@@ -6,6 +6,9 @@ using LocalAppDataFolder;
 
 namespace Configs
 {
+    /// <summary>
+    /// Contains the needed members to save and load a configurations file.
+    /// </summary>
     public abstract class ConfigsTools
     {
         /// <summary>
@@ -52,6 +55,7 @@ namespace Configs
             {
                 result = serializer.Deserialize<T>(reader);
             }
+            // The file is empty then return a new instance of the model.
             if (result == null)
             {
                 result = new T();

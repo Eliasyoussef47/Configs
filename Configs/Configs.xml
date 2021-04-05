@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Configs</name>
+    </assembly>
+    <members>
+        <member name="F:Configs.ConfigsTools.ConfigsFileName">
+            <summary>
+            The name of the configurations file. File extension included. Change this if you want to change the file's
+            name.
+            </summary>
+        </member>
+        <member name="M:Configs.ConfigsTools.Save">
+            <summary>
+            Saves the instance that inherents from ConfigsTools to the file as json.
+            </summary>
+        </member>
+        <member name="M:Configs.ConfigsTools.GetConfigs``1">
+            <summary>
+            Gets the current configurations from the configurations file.
+            </summary>
+            <typeparam name="T">The type of the configurations file model.</typeparam>
+            <returns>An instance of the configurations file model filled with the current configurations in  the 
+            configurations file. Creates a new file and returns a new instance of the class/model if no file was found.
+            </returns>
+        </member>
+    </members>
+</doc>
