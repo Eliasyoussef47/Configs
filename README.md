@@ -8,7 +8,7 @@ A simple way to save the configurations of a C# app as a json file.
 
 The json file(s) is saved in AppData/Local/{YourAppName} and there is currently no way to change that.
 
-**If you have any questionS you can post them in the discussions section.**
+**If you have any questions you can post them in the discussions section.**
 
 # How to use
 
@@ -25,35 +25,37 @@ Model example:
 ```C#
 using Configs;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
-namespace MyApp
+namespace ConfigsTest
 {
     class AppConfigs : ConfigsTools
     {
-	public AppConfigs()
-	{
-	    ConfigsFileName = "MyConfigurations.json";
-	}
+        public AppConfigs()
+        {
+            ImportantStuff = new List<ImportantThing>();
+        }
 
-	[JsonProperty("activated", Required = Required.AllowNull)]
-	public bool Activated { get; set; }
+        [JsonProperty("activated", Required = Required.AllowNull)]
+        public bool Activated { get; set; }
 
-	[JsonProperty("randomString", Required = Required.Default)]
-	public string RandomString { get; set; }
+        [JsonProperty("randomString", Required = Required.Default)]
+        public string RandomString { get; set; }
 
-	[JsonProperty("importantStuff", Required = Required.AllowNull)]
-	public List<ImportantThing> ImportantStuff { get; set; }
+        [JsonProperty("importantStuff", Required = Required.AllowNull)]
+        public List<ImportantThing> ImportantStuff { get; set; }
 
-	public ImportantThing GetImportantThing(string owner)
-	{
-	    return ImportantStuff.Find(x => x.OwnerName.Equals(owner));
-	}
+        public ImportantThing GetImportantThing(string owner)
+        {
+            return ImportantStuff.Find(x => x.OwnerName.Equals(owner));
+        }
     }
 }
 ```
 
 Pretty much anything supported by Newtonsoft.Json and is serializable can be used in this model. You can of course make
-multiple models each with a different ConfigsFileName to have multiple configurations files.
+multiple models to have multiple configurations files.
+By default the name of the json file is the name of model/class.
 
 ## Usage
 
@@ -80,7 +82,9 @@ using Configs;
 // Get the current app configurations from the json configurations file.
 AppConfigs appConfigs = ConfigsTools.GetConfigs<AppConfigs>();
 // Change value.
-appConfigs.Activated = false;
+appConfigs.RandomString = "this text is going to be saved in the json file";
+// Add object to list.
+appConfigs.ImportantStuff.Add(new ImportantThing("Elias Youssef"));
 // Save the file.
 appConfigs.Save();
 ```
@@ -90,13 +94,13 @@ appConfigs.Save();
 ```json
 {
   "activated": false,
-  "randomString": "Hey",
+  "randomString": "this text is going to be saved in the json file",
   "importantStuff": [
     {
-      "ownerName": "Elias Youssef"
+      "OwnerName": "Elias Youssef"
     },
     {
-      "ownerName": "Slim Shady"
+      "OwnerName": "Elias Youssef"
     }
   ]
 }
