@@ -45,9 +45,10 @@ namespace ConfigsTest
         [JsonProperty("importantStuff", Required = Required.AllowNull)]
         public List<ImportantThing> ImportantStuff { get; set; }
 
-        public ImportantThing GetImportantThing(string owner)
+        // You can add method that you can use when loading the config file
+        public void ChangeFirstThing()
         {
-            return ImportantStuff.Find(x => x.OwnerName.Equals(owner));
+            ImportantStuff[0].OwnerName = "Slim Shady";
         }
     }
 }
@@ -85,6 +86,8 @@ AppConfigs appConfigs = ConfigsTools.GetConfigs<AppConfigs>();
 appConfigs.RandomString = "this text is going to be saved in the json file";
 // Add object to list.
 appConfigs.ImportantStuff.Add(new ImportantThing("Elias Youssef"));
+// Use methods that are inside the model
+appConfigs.ChangeFirstThing();
 // Save the file.
 appConfigs.Save();
 ```
@@ -97,10 +100,7 @@ appConfigs.Save();
   "randomString": "this text is going to be saved in the json file",
   "importantStuff": [
     {
-      "OwnerName": "Elias Youssef"
-    },
-    {
-      "OwnerName": "Elias Youssef"
+      "OwnerName": "Slim Shady"
     }
   ]
 }
