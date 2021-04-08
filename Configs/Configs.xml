@@ -4,25 +4,156 @@
         <name>Configs</name>
     </assembly>
     <members>
-        <member name="F:Configs.ConfigsTools.ConfigsFileName">
+        <member name="T:Configs.ConfigsTools">
             <summary>
-            The name of the configurations file. File extension included. Change this if you want to change the file's
-            name.
+            Contains the needed members to save and load a configurations file.
             </summary>
+        </member>
+        <member name="F:Configs.ConfigsTools.FileName">
+            <summary>
+            The name of the configurations file. File extension included.
+            ATTENTION: if you want a costum file name add this field to your model(class) and set the value to the 
+            desired file name. DO NOT CHANGE IT IN THE CONSTRUCTOR.
+            </summary>
+            <example>
+            <code>
+            [JsonIgnore]
+            public static string FileName = "Configs1.json";
+            </code>
+            </example>
+        </member>
+        <member name="F:Configs.ConfigsTools.FileNameMethod">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Configs.ConfigsTools.DefaultFileName">
+            <summary>
+            The default name of the configurations file.
+            </summary>
+        </member>
+        <member name="M:Configs.ConfigsTools.DetermineFileName(System.Type,Configs.FileNameMethod)">
+            <summary>
+            Automatically determines the name of the configurations file depending on the model's type and chosen 
+            <c>Configs.FileName</c> enum.
+            </summary>
+            <param name="type">Depending on <paramref name="fileNameMethod"/> the name of this type, the value of a 
+            field in this type or something else is going to be used for the proces of determining the configurations 
+            file's name. Refer to <c>Configs.FileName</c> for all possible methods.</param>
+            <param name="fileNameMethod">A "Configs.FileName" option that specifies which method should be used to 
+            determine the configurations file's name.</param>
+            <returns>The name of the configurations file determined by <paramref name="type"/> and 
+            <paramref name="fileNameMethod"/>. File extension included</returns>
+            <exception cref="T:System.Reflection.TargetException">In the .NET for Windows Store apps or the Portable 
+            Class Library, catch System.Exception instead. The field is non-static and obj is null.</exception>
+            <exception cref="T:System.NotSupportedException">A field is marked literal, but the field does not have one 
+            of the accepted literal types.</exception>
+            <exception cref="T:System.FieldAccessException">In the .NET for Windows Store apps or the Portable Class 
+            Library, catch the base class exception, System.MemberAccessException, instead. The caller does not have 
+            permission to access this field.</exception>
+            <exception cref="T:System.ArgumentException">The method is neither declared nor inherited by the class of 
+            obj.</exception>
+        </member>
+        <member name="M:Configs.ConfigsTools.SaveBase(System.String)">
+            <summary>
+            Handles the actual conversion to json, serialization and saving to the configurations file as json.
+            </summary>
+            <param name="fileName">The name of the configurations file to save to. File extension included.</param>
         </member>
         <member name="M:Configs.ConfigsTools.Save">
             <summary>
-            Saves the instance that inherents from ConfigsTools to the file as json.
+            Saves the instance to the configurations file as json. The name of the file is the name of the model.
             </summary>
+        </member>
+        <member name="M:Configs.ConfigsTools.Save(Configs.FileNameMethod)">
+            <summary>
+            Saves the instance to the configurations file as json. The name of the file is determined by the 
+            <paramref name="fileNameMethod"/> parameter.
+            </summary>
+            <param name="fileNameMethod">A "Configs.FileName" option that specifies which method should be used to 
+            determine the configurations file's name.</param>
+            <exception cref="T:System.Reflection.TargetException">In the .NET for Windows Store apps or the Portable 
+            Class Library, catch System.Exception instead. The field is non-static and obj is null.</exception>
+            <exception cref="T:System.NotSupportedException">A field is marked literal, but the field does not have one 
+            of the accepted literal types.</exception>
+            <exception cref="T:System.FieldAccessException">In the .NET for Windows Store apps or the Portable Class 
+            Library, catch the base class exception, System.MemberAccessException, instead. The caller does not have 
+            permission to access this field.</exception>
+            <exception cref="T:System.ArgumentException">The method is neither declared nor inherited by the class of 
+            obj.</exception>
+        </member>
+        <member name="M:Configs.ConfigsTools.Save(System.String)">
+            <summary>
+            Saves the instance to the configurations file as json. The name of the file is determined by the 
+            <paramref name="fileName"/> parameter.
+            </summary>
+            <param name="fileName">The name of the configurations file to save to.</param>
+        </member>
+        <member name="M:Configs.ConfigsTools.GetConfigsBase``1(System.String)">
+            <summary>
+            Handles the actual conversion from json, deserialization and loading of a configurations file and making 
+            the file if it doesn't exist.
+            </summary>
+            <typeparam name="T">The type of the configurations file model. Type must inherit from ConfigsTools.
+            </typeparam>
+            <param name="fileName">The name of the configurations file to load from. File extension included.</param>
+            <returns>An instance of the configurations file model populated with the current configurations in  the 
+            configurations file. Creates a new file and returns a new instance of the model if no file was found.
+            </returns>
         </member>
         <member name="M:Configs.ConfigsTools.GetConfigs``1">
             <summary>
             Gets the current configurations from the configurations file.
             </summary>
-            <typeparam name="T">The type of the configurations file model.</typeparam>
-            <returns>An instance of the configurations file model filled with the current configurations in  the 
-            configurations file. Creates a new file and returns a new instance of the class/model if no file was found.
+            <typeparam name="T">The type of the configurations file model. Type must inherit from ConfigsTools.
+            </typeparam>
+            <returns>An instance of the configurations file model populated with the current configurations in  the 
+            configurations file. Creates a new file and returns a new instance of the model if no file was found.
             </returns>
+        </member>
+        <member name="M:Configs.ConfigsTools.GetConfigs``1(Configs.FileNameMethod)">
+            <summary>
+            Gets the current configurations from the configurations file.
+            </summary>
+            <typeparam name="T">The type of the configurations file model. Type must inherit from ConfigsTools.
+            </typeparam>
+            <param name="fileNameMethod">A "Configs.FileName" option that specifies which method should be used to 
+            determine the configurations file's name.</param>
+            <returns>An instance of the configurations file model populated with the current configurations in  the 
+            configurations file. Creates a new file and returns a new instance of the model if no file was found.
+            </returns>
+        </member>
+        <member name="M:Configs.ConfigsTools.GetConfigs``1(System.String)">
+            <summary>
+            Gets the current configurations from the configurations file.
+            </summary>
+            <typeparam name="T">The type of the configurations file model. Type must inherit from ConfigsTools.
+            </typeparam>
+            <param name="fileName">The name of the configurations file. File extension included.</param>
+            <returns>An instance of the configurations file model populated with the current configurations in  the 
+            configurations file. Creates a new file and returns a new instance of the model if no file was found.
+            </returns>
+        </member>
+        <member name="T:Configs.FileNameMethod">
+            <summary>
+            Specifies how to determine the name of the configurations file.
+            </summary>
+        </member>
+        <member name="F:Configs.FileNameMethod.ModelName">
+            <summary>
+            Use The name of the configurations file is going to be the name of the model class. This is the default.
+            </summary>
+        </member>
+        <member name="F:Configs.FileNameMethod.DefaultName">
+            <summary>
+            Use the default configurations files name that is specified by the field 
+            <c>ConfigsTools.DefaultFileName</c>.
+            </summary>
+        </member>
+        <member name="F:Configs.FileNameMethod.Field">
+            <summary>
+            Use the name sepcified in the static field <c>FileName</c> in the model class.
+            </summary>
         </member>
     </members>
 </doc>
