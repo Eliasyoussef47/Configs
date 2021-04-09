@@ -8,7 +8,7 @@ A simple way to save the configurations/settings of a C# app as a json file.
 
 The json file(s) is saved in AppData/Local/{YourAppName} and there is currently no way to change that.
 
-**If you have any questions you can post them in the discussions section.**
+**If you have any questions or suggestions you can post them in the discussions section.**
 
 # How to use
 
