@@ -31,16 +31,16 @@ namespace Configs
         /// to load and save the configurations into the configurations file.
         /// NOTE:
         /// You can add this field to your model and set its value so that it's going to be used by the 
-        /// <c>GetConfigs<T>()</c> and <c>Save()</c> methods everytime they are called. This way you can use the 
+        /// <c>GetConfigs()</c> and <c>Save()</c> methods everytime they are called. This way you can use the 
         /// desired file name without having to pass a <c>FileNameMethod</c> enum everytime you call 
-        /// <c>GetConfigs<T>(FileNameMethod fileNameMethod)</c> or <c>Save(FileNameMethod fileNameMethod)</c>. 
+        /// <c>GetConfigs(FileNameMethod fileNameMethod)</c> or <c>Save(FileNameMethod fileNameMethod)</c>. 
         /// Technically this is only useful if you plan on using <c>FileNameMethod.DefaultName</c> because in that 
         /// case you don't have to pass an argument everytime you call the aforementioned methods, the reasoning behind 
         /// that is when you want to use <c>FileNameMethod.FileNameField</c> it's less work to just add the 
-        /// <c>FileName</c> static field and use the <c>GetConfigs<T>()</c> and <c>Save()</c> methods which will 
+        /// <c>FileName</c> static field and use the <c>GetConfigs()</c> and <c>Save()</c> methods which will 
         /// automatically use the <c>FileName</c> static field if the model doesn't have a <c>FileNameMethod</c> 
         /// static field and if you want to use the model's name then just don't add the <c>FileName</c> static field 
-        /// and the <c>FileNameMethod</c> static field and just use the <c>GetConfigs<T>()</c> and <c>Save()</c> 
+        /// and the <c>FileNameMethod</c> static field and just use the <c>GetConfigs()</c> and <c>Save()</c> 
         /// methods.
         /// </summary>
         /// <example>
@@ -214,7 +214,6 @@ namespace Configs
             }
         }
 
-        // TODO: more summary
         /// <summary>
         /// Saves the instance to the configurations file as json.
         /// The configurations file's name is determined by checking some conditions. First this method checks if 

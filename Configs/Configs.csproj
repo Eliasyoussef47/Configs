@@ -9,10 +9,10 @@
     <PackageProjectUrl>https://github.com/Eliasyoussef47/Configs</PackageProjectUrl>
     <Description>A simple way to save the configurations of a C# app in json.
 Window Settings icon by Icons8 (https://icons8.com)</Description>
-    <Version>1.0.4</Version>
-    <FileVersion>1.0.3.0</FileVersion>
+    <Version>2.0.1</Version>
+    <FileVersion>2.0.0.0</FileVersion>
     <PackageIcon>icons8-window-settings-96.png</PackageIcon>
-    <AssemblyVersion>1.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <PackageReleaseNotes>Enabled "XML documentation file"</PackageReleaseNotes>
   </PropertyGroup>
 
