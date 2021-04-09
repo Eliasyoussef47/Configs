@@ -82,17 +82,17 @@ using Configs;
 
 // Get the current app configurations from the json configurations file.
 AppConfigs appConfigs = ConfigsTools.GetConfigs<AppConfigs>();
-// Change value.
+// Change a value.
 appConfigs.RandomString = "this text is going to be saved in the json file";
-// Add object to list.
+// Add AN object to a list.
 appConfigs.ImportantStuff.Add(new ImportantThing("Elias Youssef"));
-// Use methods that are inside the model
+// Use a method that is inside the model
 appConfigs.ChangeFirstThing();
 // Save the file.
 appConfigs.Save();
 ```
 
-## Result
+### Result
 
 ```json
 {
