@@ -4,7 +4,7 @@
 
 https://www.nuget.org/packages/Configs/
 
-A simple way to save the configurations of a C# app as a json file.
+A simple way to save the configurations/settings of a C# app as a json file.
 
 The json file(s) is saved in AppData/Local/{YourAppName} and there is currently no way to change that.
 
