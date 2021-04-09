@@ -45,7 +45,7 @@ namespace ConfigsTest
         [JsonProperty("importantStuff", Required = Required.AllowNull)]
         public List<ImportantThing> ImportantStuff { get; set; }
 
-        // You can add methods that you can use when loading the config file
+        // You can add methods that you can use after loading the config file
         public void ChangeFirstThing()
         {
             ImportantStuff[0].OwnerName = "Slim Shady";
