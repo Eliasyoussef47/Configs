@@ -36,6 +36,7 @@ namespace ConfigsTest
             ImportantStuff = new List<ImportantThing>();
         }
 
+        // This attribute is for Newtonsoft.Json and isn't needed but recommended
         [JsonProperty("activated", Required = Required.AllowNull)]
         public bool Activated { get; set; }
 
