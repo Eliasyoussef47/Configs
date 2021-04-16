@@ -23,34 +23,27 @@ Make a class that inherits from ConfigsTools. This class is the model for your c
 Model example:
 
 ```C#
-using Configs;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-
-namespace ConfigsTest
+class AppConfigs : ConfigsTools
 {
-    class AppConfigs : ConfigsTools
+    public AppConfigs()
     {
-        public AppConfigs()
-        {
-            ImportantStuff = new List<ImportantThing>();
-        }
+        ImportantStuff = new List<ImportantThing>();
+    }
 
-        // This attribute is for Newtonsoft.Json and isn't needed but recommended
-        [JsonProperty("activated", Required = Required.AllowNull)]
-        public bool Activated { get; set; }
+    // This attribute is for Newtonsoft.Json and isn't needed but recommended
+    [JsonProperty("activated", Required = Required.AllowNull)]
+    public bool Activated { get; set; }
 
-        [JsonProperty("randomString", Required = Required.Default)]
-        public string RandomString { get; set; }
+    [JsonProperty("randomString", Required = Required.Default)]
+    public string RandomString { get; set; }
 
-        [JsonProperty("importantStuff", Required = Required.AllowNull)]
-        public List<ImportantThing> ImportantStuff { get; set; }
+    [JsonProperty("importantStuff", Required = Required.AllowNull)]
+    public List<ImportantThing> ImportantStuff { get; set; }
 
-        // You can add methods that you can use after loading the config file
-        public void ChangeFirstThing()
-        {
-            ImportantStuff[0].OwnerName = "Slim Shady";
-        }
+    // You can add methods that you can use after loading the config file
+    public void ChangeFirstThing()
+    {
+        ImportantStuff[0].OwnerName = "Slim Shady";
     }
 }
 ```
