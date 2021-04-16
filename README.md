@@ -57,10 +57,6 @@ By default the name of the json file is the name of model/class.
 ### Getting the file's values
 
 ```C#
-using Configs;
-
-...
-
 // Get the current app configurations from the json configurations file.
 AppConfigs appConfigs = ConfigsTools.GetConfigs<AppConfigs>();
 // Get a value from the configurations file.
@@ -70,12 +66,6 @@ bool appConfigActivated = appConfigs.Activated;
 ### Editing and saving the file
 
 ```C#
-using Configs;
-
-...
-
-// Get the current app configurations from the json configurations file.
-AppConfigs appConfigs = ConfigsTools.GetConfigs<AppConfigs>();
 // Change a value.
 appConfigs.RandomString = "this text is going to be saved in the json file";
 // Add AN object to a list.
