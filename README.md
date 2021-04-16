@@ -68,7 +68,7 @@ bool appConfigActivated = appConfigs.Activated;
 ```C#
 // Change a value.
 appConfigs.RandomString = "this text is going to be saved in the json file";
-// Add AN object to a list.
+// Add an object to a list.
 appConfigs.ImportantStuff.Add(new ImportantThing("Elias Youssef"));
 // Use a method that is inside the model
 appConfigs.ChangeFirstThing();
