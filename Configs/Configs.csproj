@@ -4,16 +4,20 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <Authors>Elias Youssef</Authors>
     <Copyright>Elias Youssef</Copyright>
-    <PackageTags>Configurations, Configs, AppData, local AppData</PackageTags>
+    <PackageTags>Settings, json, json settings, Configurations, Configs, AppData, local AppData</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/Eliasyoussef47/Configs</PackageProjectUrl>
-    <Description>A simple way to save the configurations of a C# app in json.
-Window Settings icon by Icons8 (https://icons8.com)</Description>
-    <Version>2.0.1</Version>
-    <FileVersion>2.0.0.0</FileVersion>
+    <Description>A simple way to save configurations and settings in a json file. Unique features:
+- Support for multiple files.
+- Uses models to specify the properties of the settings file.
+- Methods inside the models make working with the settings values easy.</Description>
+    <Version>2.0.2</Version>
+    <FileVersion>2.0.2.0</FileVersion>
     <PackageIcon>icons8-window-settings-96.png</PackageIcon>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <PackageReleaseNotes>Enabled "XML documentation file"</PackageReleaseNotes>
+    <AssemblyVersion>2.0.2.0</AssemblyVersion>
+    <PackageReleaseNotes>Better package meta data</PackageReleaseNotes>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <RepositoryUrl></RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
