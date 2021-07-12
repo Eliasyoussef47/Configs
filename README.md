@@ -8,7 +8,7 @@ A simple way to save the configurations/settings of a C# app as a json file.
 
 The json file(s) is saved in AppData/Local/{YourAppName} and there is currently no way to change that.
 
-**If you have any questions you can post them in the discussions section.**
+**If you have any questions or suggestions you can post them in the discussions section.**
 
 # How to use
 
@@ -23,33 +23,27 @@ Make a class that inherits from ConfigsTools. This class is the model for your c
 Model example:
 
 ```C#
-using Configs;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-
-namespace ConfigsTest
+class AppConfigs : ConfigsTools
 {
-    class AppConfigs : ConfigsTools
+    public AppConfigs()
     {
-        public AppConfigs()
-        {
-            ImportantStuff = new List<ImportantThing>();
-        }
+        ImportantStuff = new List<ImportantThing>();
+    }
 
-        [JsonProperty("activated", Required = Required.AllowNull)]
-        public bool Activated { get; set; }
+    // This attribute is for Newtonsoft.Json and isn't needed but recommended
+    [JsonProperty("activated", Required = Required.AllowNull)]
+    public bool Activated { get; set; }
 
-        [JsonProperty("randomString", Required = Required.Default)]
-        public string RandomString { get; set; }
+    [JsonProperty("randomString", Required = Required.Default)]
+    public string RandomString { get; set; }
 
-        [JsonProperty("importantStuff", Required = Required.AllowNull)]
-        public List<ImportantThing> ImportantStuff { get; set; }
+    [JsonProperty("importantStuff", Required = Required.AllowNull)]
+    public List<ImportantThing> ImportantStuff { get; set; }
 
-        // You can add methods that you can use when loading the config file
-        public void ChangeFirstThing()
-        {
-            ImportantStuff[0].OwnerName = "Slim Shady";
-        }
+    // You can add methods that you can use after loading the config file
+    public void ChangeFirstThing()
+    {
+        ImportantStuff[0].OwnerName = "Slim Shady";
     }
 }
 ```
@@ -63,10 +57,6 @@ By default the name of the json file is the name of model/class.
 ### Getting the file's values
 
 ```C#
-using Configs;
-
-...
-
 // Get the current app configurations from the json configurations file.
 AppConfigs appConfigs = ConfigsTools.GetConfigs<AppConfigs>();
 // Get a value from the configurations file.
@@ -76,23 +66,17 @@ bool appConfigActivated = appConfigs.Activated;
 ### Editing and saving the file
 
 ```C#
-using Configs;
-
-...
-
-// Get the current app configurations from the json configurations file.
-AppConfigs appConfigs = ConfigsTools.GetConfigs<AppConfigs>();
-// Change value.
+// Change a value.
 appConfigs.RandomString = "this text is going to be saved in the json file";
-// Add object to list.
+// Add an object to a list.
 appConfigs.ImportantStuff.Add(new ImportantThing("Elias Youssef"));
-// Use methods that are inside the model
+// Use a method that is inside the model
 appConfigs.ChangeFirstThing();
 // Save the file.
 appConfigs.Save();
 ```
 
-## Result
+### Result
 
 ```json
 {
