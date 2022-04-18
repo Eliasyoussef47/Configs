@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using LocalAppDataFolder;
 using System.Reflection;
@@ -17,15 +16,17 @@ namespace Configs
         /// The name of the configurations file. File extension included.
         /// ATTENTION: if you want a costum file name add this field to your model(class) and set the value to the 
         /// desired file name. DO NOT CHANGE IT IN THE CONSTRUCTOR.
-        /// </summary>
         /// <example>
+        /// Example:
         /// <code>
         /// [JsonIgnore]
         /// public static string FileName = "MyConfigsFile.json";
         /// </code>
         /// </example>
+        /// </summary>
         [JsonIgnore]
         protected static string FileName;
+
         /// <summary>
         /// The method that's going to be used everytime to determine how to determine the configurations file's name 
         /// to load and save the configurations into the configurations file.
@@ -51,6 +52,7 @@ namespace Configs
         /// </example>
         [JsonIgnore]
         protected static FileNameMethod FileNameMethod;
+
         /// <summary>
         /// The default name of the configurations file. This value is used when FileNameMethod.DefaultName is used. 
         /// </summary>
@@ -90,6 +92,13 @@ namespace Configs
             else if (fileNameMethod == FileNameMethod.FileNameField)
             {
                 FieldInfo fileNameFieldInfo = type.GetField("FileName", BindingFlags.Static | BindingFlags.Public);
+
+                if (fileNameFieldInfo == null)
+                {
+                    throw new MissingFieldException(
+                        $"Field FileNam wasn't found in {type.Name}");
+                }
+
                 return (string)fileNameFieldInfo.GetValue(null);
             }
             else
@@ -111,18 +120,17 @@ namespace Configs
         protected static T GetConfigsBase<T>(string fileName) where T : ConfigsTools, new()
         {
             T result;
-            JsonSerializer serializer = new JsonSerializer();
-            LocalAppData localAppDataFolder = new LocalAppData();
+            var serializer = new JsonSerializer();
+            var localAppDataFolder = new LocalAppData();
             using (FileStream stream = localAppDataFolder.GetFile(fileName))
-            using (StreamReader sw = new StreamReader(stream))
+            using (var sw = new StreamReader(stream))
             using (JsonReader reader = new JsonTextReader(sw))
             {
                 result = serializer.Deserialize<T>(reader);
             }
-            if (result == null)
-            {
-                result = new T();
-            }
+
+            result ??= new T();
+
             return result;
         }
 
@@ -147,15 +155,17 @@ namespace Configs
             if (fileNameMethodFieldInfo != null)
             {
                 FileNameMethod fileNameMethod = (FileNameMethod)fileNameMethodFieldInfo.GetValue(null);
+
                 return GetConfigs<T>(fileNameMethod);
             }
             else
             {
                 FieldInfo fileNameFieldInfo = typeof(T).GetField("FileName", BindingFlags.Static |
-                    BindingFlags.Public);
+                                                                             BindingFlags.Public);
                 if (fileNameFieldInfo != null)
                 {
                     string fileName = (string)fileNameFieldInfo.GetValue(null);
+
                     return GetConfigs<T>(fileName);
                 }
                 else
@@ -200,18 +210,17 @@ namespace Configs
         /// <param name="fileName">The name of the configurations file to save to. File extension included.</param>
         protected void SaveBase(string fileName)
         {
-            JsonSerializer serializer = new JsonSerializer
+            var serializer = new JsonSerializer
             {
                 Formatting = Formatting.Indented
             };
-            var configFile = this;
-            LocalAppData localAppDataFolder = new LocalAppData();
-            using (FileStream stream = localAppDataFolder.GetFile(fileName))
-            using (StreamWriter sw = new StreamWriter(stream))
-            using (JsonWriter writer = new JsonTextWriter(sw))
-            {
-                serializer.Serialize(writer, configFile);
-            }
+            ConfigsTools configFile = this;
+            var localAppDataFolder = new LocalAppData();
+
+            using FileStream stream = localAppDataFolder.GetFile(fileName);
+            using var sw = new StreamWriter(stream);
+            using JsonWriter writer = new JsonTextWriter(sw);
+            serializer.Serialize(writer, configFile);
         }
 
         /// <summary>
@@ -229,13 +238,13 @@ namespace Configs
                 BindingFlags.Public);
             if (fileNameMethodFieldInfo != null)
             {
-                FileNameMethod fileNameMethod = (FileNameMethod)fileNameMethodFieldInfo.GetValue(null);
+                var fileNameMethod = (FileNameMethod)fileNameMethodFieldInfo.GetValue(null);
                 Save(fileNameMethod);
             }
             else
             {
                 FieldInfo fileNameFieldInfo = GetType().GetField("FileName", BindingFlags.Static |
-                    BindingFlags.Public);
+                                                                             BindingFlags.Public);
                 if (fileNameFieldInfo != null)
                 {
                     string fileName = (string)fileNameFieldInfo.GetValue(null);

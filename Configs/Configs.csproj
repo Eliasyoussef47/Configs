@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFrameworks>netstandard2.1;net48</TargetFrameworks>
     <Authors>Elias Youssef</Authors>
     <Copyright>Elias Youssef</Copyright>
     <PackageTags>Settings, json, json settings, Configurations, Configs, AppData, local AppData</PackageTags>
@@ -9,15 +9,20 @@
     <PackageProjectUrl>https://github.com/Eliasyoussef47/Configs</PackageProjectUrl>
     <Description>A simple way to save configurations and settings in a json file. Unique features:
 - Support for multiple files.
-- Uses models to specify the properties of the settings file.
+- Uses models to specify the properties (and their types) of the settings file.
+- Type safety.
 - Methods inside the models make working with the settings values easy.</Description>
-    <Version>2.0.2</Version>
-    <FileVersion>2.0.2.0</FileVersion>
+    <Version>2.0.3</Version>
+    <FileVersion>2.0.3.0</FileVersion>
     <PackageIcon>icons8-window-settings-96.png</PackageIcon>
-    <AssemblyVersion>2.0.2.0</AssemblyVersion>
-    <PackageReleaseNotes>Better package meta data</PackageReleaseNotes>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <PackageReleaseNotes>Fixed a dependency version.
+Added support for .NET Framework 4.8.
+Fixed some documentation.</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <RepositoryUrl></RepositoryUrl>
+    <RepositoryUrl>https://github.com/Eliasyoussef47/Configs</RepositoryUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -28,6 +33,10 @@
     <Compile Remove="Helpers\**" />
     <EmbeddedResource Remove="Helpers\**" />
     <None Remove="Helpers\**" />
+    <None Include="..\..\LocalAppDataFolder\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
     <None Include="Assets\icons8-window-settings-96.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
@@ -35,8 +44,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="LocalAppDataFolder" Version="1.0.3" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="LocalAppDataFolder" Version="1.0.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
 </Project>

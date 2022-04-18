@@ -13,15 +13,16 @@
         <member name="F:Configs.ConfigsTools.FileName">
             <summary>
             The name of the configurations file. File extension included.
-            ATTENTION: if you want a costum file name add this field to your model(class) and set the value to the 
+            ATTENTION: if you want a custom file name add this field to your model(class) and set the value to the 
             desired file name. DO NOT CHANGE IT IN THE CONSTRUCTOR.
-            </summary>
             <example>
+            Example:
             <code>
             [JsonIgnore]
             public static string FileName = "MyConfigsFile.json";
             </code>
             </example>
+            </summary>
         </member>
         <member name="F:Configs.ConfigsTools.FileNameMethod">
             <summary>
@@ -174,7 +175,7 @@
         </member>
         <member name="F:Configs.FileNameMethod.ModelName">
             <summary>
-            Use The name of the configurations file is going to be the name of the model class. This is the default.
+            Used the name of the model class. This is the default.
             </summary>
         </member>
         <member name="F:Configs.FileNameMethod.DefaultName">
