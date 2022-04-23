@@ -14,7 +14,7 @@ namespace Configs
     {
         /// <summary>
         /// The name of the configurations file. File extension included.
-        /// ATTENTION: if you want a costum file name add this field to your model(class) and set the value to the 
+        /// ATTENTION: if you want a custom file name add this field to your model(class) and set the value to the 
         /// desired file name. DO NOT CHANGE IT IN THE CONSTRUCTOR.
         /// <example>
         /// Example:
@@ -28,15 +28,15 @@ namespace Configs
         protected static string FileName;
 
         /// <summary>
-        /// The method that's going to be used everytime to determine how to determine the configurations file's name 
+        /// The method that's going to be used every time to determine how to determine the configurations file's name 
         /// to load and save the configurations into the configurations file.
         /// NOTE:
         /// You can add this field to your model and set its value so that it's going to be used by the 
-        /// <c>GetConfigs()</c> and <c>Save()</c> methods everytime they are called. This way you can use the 
-        /// desired file name without having to pass a <c>FileNameMethod</c> enum everytime you call 
+        /// <c>GetConfigs()</c> and <c>Save()</c> methods every time they are called. This way you can use the 
+        /// desired file name without having to pass a <c>FileNameMethod</c> enum every time you call 
         /// <c>GetConfigs(FileNameMethod fileNameMethod)</c> or <c>Save(FileNameMethod fileNameMethod)</c>. 
         /// Technically this is only useful if you plan on using <c>FileNameMethod.DefaultName</c> because in that 
-        /// case you don't have to pass an argument everytime you call the aforementioned methods, the reasoning behind 
+        /// case you don't have to pass an argument every time you call the aforementioned methods, the reasoning behind 
         /// that is when you want to use <c>FileNameMethod.FileNameField</c> it's less work to just add the 
         /// <c>FileName</c> static field and use the <c>GetConfigs()</c> and <c>Save()</c> methods which will 
         /// automatically use the <c>FileName</c> static field if the model doesn't have a <c>FileNameMethod</c> 
