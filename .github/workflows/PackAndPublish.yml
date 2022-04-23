@@ -27,6 +27,7 @@ jobs:
         run: dotnet pack --no-restore --no-build -c Release "Configs/Configs.csproj" -o . 
   
   publish:
+    needs: build
     runs-on: 'windows-latest'
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -41,6 +42,7 @@ jobs:
 
 
   publish_gh:
+    needs: build
     runs-on: 'windows-latest'
 
     # Steps represent a sequence of tasks that will be executed as part of the job
