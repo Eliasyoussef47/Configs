@@ -10,7 +10,6 @@ jobs:
   build:
     runs-on: 'windows-latest'
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v3
 
@@ -24,14 +23,54 @@ jobs:
         run: dotnet build -c Release "Configs/Configs.csproj"
 
       - name: Pack project
-        run: dotnet pack --no-restore --no-build -c Release "Configs/Configs.csproj" -o . 
-        
-      - name: Publish package on NuGet
-        run: dotnet nuget push *.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
-        
-      - name: Add GitHub as a source
+        run: dotnet pack --no-restore --no-build -c Release "Configs/Configs.csproj" -o "./out" 
+
+      - name: List files
+        run: |
+          cd out
+          ls
+  
+  publish:
+    needs: build
+    runs-on: 'windows-latest'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v2.0.0
+
+      - name: List files
+        run: |
+          cd out
+          ls
+
+      - name: Publish package
+        run: |
+          cd out
+          dotnet nuget push *.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+
+
+  publish_gh:
+    needs: build
+    runs-on: 'windows-latest'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v2.0.0
+
+      - name: Publish package
         run: dotnet nuget add source --username Eliasyoussef47 --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/OWNER/index.json"
         
-      - name: Publish package on GitHub
-        run: dotnet nuget push *.nupkg --source "github"
+      - name: List files
+        run: |
+          cd out
+          ls
+        
+      - name: Publish package
+        run: |
+          cd out
+          dotnet nuget push *.nupkg --source "github"
         
