@@ -13,10 +13,10 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v2.0.0
-        
+
       - name: Restore packages
         run: dotnet restore "Configs/Configs.csproj"
 
@@ -24,7 +24,35 @@ jobs:
         run: dotnet build -c Release "Configs/Configs.csproj"
 
       - name: Pack project
-        run: dotnet pack --no-restore --no-build -c Release "Configs/Configs.csproj" -o .
-        
+        run: dotnet pack --no-restore --no-build -c Release "Configs/Configs.csproj" -o . 
+  
+  publish:
+    runs-on: 'windows-latest'
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v2.0.0
+
       - name: Publish package
         run: dotnet nuget push *.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+
+
+  publish_gh:
+    runs-on: 'windows-latest'
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v2.0.0
+
+      - name: Publish package
+        run: dotnet nuget add source --username Eliasyoussef47 --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/OWNER/index.json"
+        
+      - name: Publish package
+        run: dotnet nuget push *.nupkg --source "github"
+        
