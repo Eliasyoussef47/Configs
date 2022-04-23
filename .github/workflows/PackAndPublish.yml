@@ -26,7 +26,10 @@ jobs:
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v2.0.0
 
-      - name: Build and pack project
+      - name: Build project
+        run: dotnet build -c Release "Configs/Configs.csproj"
+
+      - name: Pack project
         run: dotnet pack -c Release "Configs/Configs.csproj" -o .
         
       - name: Publish package
