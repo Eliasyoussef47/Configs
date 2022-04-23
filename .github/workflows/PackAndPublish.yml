@@ -18,6 +18,11 @@ jobs:
 
       - name: Restore packages
         run: dotnet restore "Configs/Configs.csproj"
+        
+      - uses: actions/cache@v3
+        with:
+          path: ./out
+          key: ${{ runner.os }}-nuget-${{ hashFiles('Configs/Configs.csproj') }}
 
       - name: Build project
         run: dotnet build -c Release "Configs/Configs.csproj"
