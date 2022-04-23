@@ -29,11 +29,6 @@ jobs:
         with:
           name: package
           path: ./out/*.nupkg
-
-      - name: List files
-        run: |
-          cd out
-          ls
   
   publish:
     needs: build
@@ -69,9 +64,6 @@ jobs:
         with:
           name: package
         
-      - name: List files
-        run: ls
-        
       - name: Publish package
-        run: dotnet nuget push *.nupkg --source "github"
+        run: dotnet nuget push *.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source "github"
         
