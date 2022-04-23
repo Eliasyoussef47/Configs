@@ -11,7 +11,7 @@
         ModelName,
 
         /// <summary>
-        /// Use the default configurations files name that is specified by the field 
+        /// Use the default configurations files name that is specified by the field
         /// <c>ConfigsTools.DefaultFileName</c>.
         /// </summary>
         DefaultName,

@@ -175,7 +175,7 @@
         </member>
         <member name="F:Configs.FileNameMethod.ModelName">
             <summary>
-            Used the name of the model class. This is the default.
+            Use the name of the model class. This is the default.
             </summary>
         </member>
         <member name="F:Configs.FileNameMethod.DefaultName">
@@ -186,7 +186,7 @@
         </member>
         <member name="F:Configs.FileNameMethod.FileNameField">
             <summary>
-            Use the name sepcified in the static field <c>FileName</c> in the model class.
+            Use the name specified in the static field <c>FileName</c> in the model class.
             </summary>
         </member>
     </members>
