@@ -13,9 +13,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  publish:
-    # The type of runner that the job will run on
+  build:
     runs-on: 'windows-latest'
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -34,6 +32,13 @@ jobs:
 
       - name: Pack project
         run: dotnet pack --no-restore --no-build -c Release "Configs/Configs.csproj" -o .
-        
+
+  # This workflow contains a single job called "build"
+  publish:
+    needs: build
+    runs-on: 'windows-latest'
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
       - name: Publish package
         run: dotnet nuget push *.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
