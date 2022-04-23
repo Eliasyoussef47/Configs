@@ -16,7 +16,7 @@ jobs:
   # This workflow contains a single job called "build"
   publish:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: 'windows-latest'
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -25,12 +25,15 @@ jobs:
       
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v2.0.0
+        
+      - name: Restore packages
+        run: dotnet restore "Configs/Configs.csproj"
 
       - name: Build project
         run: dotnet build -c Release "Configs/Configs.csproj"
 
       - name: Pack project
-        run: dotnet pack -c Release "Configs/Configs.csproj" -o .
+        run: dotnet pack --no-restore --no-build -c Release "Configs/Configs.csproj" -o .
         
       - name: Publish package
         run: dotnet nuget push *.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
