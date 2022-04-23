@@ -32,6 +32,7 @@ Fixed typos in documentation.</PackageReleaseNotes>
     <Compile Remove="Helpers\**" />
     <EmbeddedResource Remove="Helpers\**" />
     <None Remove="Helpers\**" />
+    <None Include="..\LICENSE" Pack="true" PackagePath="" />
     <None Include="Assets\icons8-window-settings-96.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
