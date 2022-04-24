@@ -25,6 +25,7 @@ namespace Configs
         /// </example>
         /// </summary>
         [JsonIgnore]
+        // ReSharper disable once UnusedMember.Global
         protected static string FileName;
 
         /// <summary>
@@ -51,6 +52,7 @@ namespace Configs
         /// </code>
         /// </example>
         [JsonIgnore]
+        // ReSharper disable once UnusedMember.Global
         protected static FileNameMethod FileNameMethod;
 
         /// <summary>
