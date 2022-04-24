@@ -12,12 +12,11 @@
 - Uses models to specify the properties (and their types) of the settings file.
 - Type safety.
 - Methods inside the models make working with the settings values easy.</Description>
-    <Version>2.0.4</Version>
-    <FileVersion>2.0.4.0</FileVersion>
+    <Version>2.0.5</Version>
+    <FileVersion>2.0.5.0</FileVersion>
     <PackageIcon>icons8-window-settings-96.png</PackageIcon>
-    <AssemblyVersion>2.0.4.0</AssemblyVersion>
-    <PackageReleaseNotes>Changed C# language version.
-Fixed typos in documentation.</PackageReleaseNotes>
+    <AssemblyVersion>2.0.5.0</AssemblyVersion>
+    <PackageReleaseNotes>Minor code cleanup.</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <RepositoryUrl>https://github.com/Eliasyoussef47/Configs</RepositoryUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
