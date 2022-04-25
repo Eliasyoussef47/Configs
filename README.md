@@ -4,7 +4,7 @@
 
 https://www.nuget.org/packages/Configs/
 
-![Nuget](https://img.shields.io/nuget/v/Configs?style=flat-square)
+[![Nuget](https://img.shields.io/nuget/v/Configs?style=flat-square)](https://www.nuget.org/packages/Configs/)
 
 A simple way to save the configurations/settings of a C# app as a json file.
 
